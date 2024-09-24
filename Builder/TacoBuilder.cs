@@ -2,8 +2,19 @@
 
 public class TacoBuilder : ITacoBuilder
 {
+    private static TacoBuilder? _instance;
     private Taco _taco = new Taco();
 
+    private TacoBuilder() { }
+    
+    public static TacoBuilder GetInstance()
+    {
+        if (_instance == null)
+        {
+            _instance = new TacoBuilder();
+        }
+        return _instance;
+    }
     public ITacoBuilder AddTortilla()
     {
         _taco.ingredients.Add("Tortilla");
@@ -74,5 +85,15 @@ public class TacoBuilder : ITacoBuilder
         {
             return null;
         }
+    }
+    
+    public Taco CloneTaco()
+    {
+        return (Taco)_taco.Clone();
+    }
+    
+    public void Reset()
+    {
+        _taco = new Taco();
     }
 }

@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Builder", "Builder\Builder.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTacoBuilder", "TestTacoBuilder\TestTacoBuilder.csproj", "{9AB36EC0-5CC5-4BD6-B98A-D321D26D8D7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstract factory", "Abstract factory\Abstract factory.csproj", "{7440824C-CB89-4E26-B5FE-3F1E80FAA771}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractFactory", "AbstractFactory\AbstractFactory.csproj", "{7440824C-CB89-4E26-B5FE-3F1E80FAA771}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

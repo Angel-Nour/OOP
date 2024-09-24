@@ -8,6 +8,13 @@ public class Taco
     {
         return $"Taco with: {string.Join(", ", ingredients)}";
     }
+    
+    public object Clone()
+    {
+        Taco clone = new Taco();
+        clone.ingredients = new List<string>(this.ingredients);
+        return clone;
+    }
 
   /*  public string Menu()
     {
