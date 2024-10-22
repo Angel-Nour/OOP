@@ -2,5 +2,5 @@
 
 public interface IChocolate : IProduct
 {
-    
+    string Try();
 }

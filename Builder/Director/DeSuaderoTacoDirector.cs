@@ -9,16 +9,13 @@ public class DeSuaderoTacoDirector
         _builder = builder;
     }
 
-    public string Construct()
+    public void Construct()
     {
-        var taco = _builder.AddMeet().AddTortilla().AddOnion().AddSauce().AddTomato().AddCheese().GetTaco();
-        if (taco == null)
-        {
-            return "Taco not ready";
-        }
-        else
-        {
-            return taco.ToString();
-        }
+        _builder.AddMeet();
+        _builder.AddTortilla();
+        _builder.AddOnion();
+        _builder.AddSauce();
+        _builder.AddTomato();
+        _builder.AddCheese();
     }
 }

@@ -9,16 +9,14 @@ public class VegetableTacoDirector
         _builder = builder;
     }
 
-    public string Construct()
+    public void Construct()
     {
-       var taco = _builder.AddTortilla().AddSauce().AddTomato().AddAvocado().AddSalad().AddPepper().GetTaco();
-        if (taco == null)
-        {
-            return "Taco not ready";
-        }
-        else
-        {
-            return taco.ToString();
-        }
+        _builder.AddTortilla();
+        _builder.AddSauce(); 
+        _builder.AddTomato(); 
+        _builder.AddAvocado();
+        _builder.AddSalad();
+        _builder.AddPepper();
+
     }
 }

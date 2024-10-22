@@ -9,7 +9,7 @@ public class OwnTacoDirector
         _builder = builder;
     }
 
-    public string Construct(List<string> selectedIngredients)
+    public void Construct(List<string> selectedIngredients)
     {
         foreach (var ingredient in selectedIngredients)
         {
@@ -48,16 +48,6 @@ public class OwnTacoDirector
                 default:
                     throw new Exception();
             }
-        }
-
-        var taco = _builder.GetTaco();
-        if (taco == null)
-        {
-            return "Taco not ready";
-        }
-        else
-        {
-            return taco.ToString();
         }
     }
 }

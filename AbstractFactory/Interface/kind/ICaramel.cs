@@ -1,6 +1,6 @@
 ﻿namespace AbstractFactory;
 
-public interface ICaramel : IProduct
+public interface ICaramel: IProduct
 {
-    
+    string Try();
 }

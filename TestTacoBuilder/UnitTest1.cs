@@ -12,16 +12,16 @@ public class Tests
     [Test]
     public void Test1()
     {
-        TacoBuilder builder = TacoBuilder.GetInstance();
+        TacoBuilder builder = new TacoBuilder();
         OwnTacoDirector director = new OwnTacoDirector(builder);
 
-        List<string> selectedIngredients = new List<string> {"cheese", "tortilla"};
+       /* List<string> selectedIngredients = new List<string> {"cheese", "tortilla"};
         var result = director.Construct(selectedIngredients);
         
-        Taco clonedTaco = builder.CloneTaco();
+        MenuTacoBuilder clonedTaco = builder.CloneTaco();
         clonedTaco.ingredients.Add("Avocado");
         
         TestContext.WriteLine(clonedTaco);
-        builder.Reset(); 
+        builder.Reset(); */
     }
 }

@@ -60,28 +60,11 @@ public class TacoBuilder : ITacoBuilder
     
     public Taco GetTaco()
     {
-        return new Taco(_ingredients);
+        return new Taco(new List<string>(_ingredients));
     }
-  /*  public Taco? GetTaco()
-    {
-        if (_ingredients.Contains("Tortilla"))
-        {
-            return _taco;
-        }
-        else
-        {
-            return null;
-        }
-    }*/
     
-
-  /*  public Taco CloneTaco()
+    public void Reset()
     {
-        return (MenuTacoBuilder)_taco.Clone();
-    }*/
-    
-   /* public void Reset()
-    {
-        _taco = new Taco();
-    }*/
+        _ingredients = new List<string>();
+    }
 }

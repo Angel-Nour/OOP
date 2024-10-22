@@ -2,5 +2,5 @@
 
 public interface ILollipops : IProduct
 {
-    
+    string Try();
 }
