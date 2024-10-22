@@ -4,10 +4,10 @@ namespace Builder;
 
 public class Taco
 {
-    public List<string> Ingredients { get; set; }
-    public Taco(List<string> ingredients)
+    private readonly List<string> ingredients;
+    public Taco()
     {
-        Ingredients = ingredients;
+        ingredients = new List<string>();
     }
 
     public override string ToString()
@@ -15,13 +15,9 @@ public class Taco
         var text = new StringBuilder();
         text.Append("Burger: ");
         text.Append("Ingredients: ");
-        text.AppendJoin(", ", Ingredients);
+        text.AppendJoin(", ", ingredients);
         
         return text.ToString();
     }
     
-    public object Clone()
-    {
-        return new Taco(new List<string>(this.Ingredients));
-    }
 }
