@@ -2,7 +2,7 @@
 
 public class MenuTacoBuilder : ITacoBuilder
 {
-    private List<string> _ingredients;
+    private readonly List<string> _ingredients;
     
     public MenuTacoBuilder()
     {

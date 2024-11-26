@@ -60,11 +60,6 @@ public class TacoBuilder : ITacoBuilder
     
     public Taco GetTaco()
     {
-        return new Taco();
-    }
-    
-    public void Reset()
-    {
-        _ingredients = new List<string>();
+        return new Taco(_ingredients);
     }
 }
