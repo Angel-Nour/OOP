@@ -6,9 +6,9 @@ public class Node : ITreeComponent
 {
     public int Value { get; private set; }
     private List<ITreeComponent> _children = new List<ITreeComponent>();
-    public Node(int val)
+    public Node(int value)
     {
-        Value = val;
+        Value = value;
     }
     public IEnumerator<int> GetEnumerator()
     {
@@ -16,9 +16,9 @@ public class Node : ITreeComponent
 
         foreach (var child in _children)
         {
-            foreach (var val in child)
+            foreach (var value in child)
             {
-                yield return val;
+                yield return value;
             }
         }
     }
@@ -28,8 +28,8 @@ public class Node : ITreeComponent
         return GetEnumerator();
     }
     
-    public void Add(ITreeComponent _comp)
+    public void Add(ITreeComponent _child)
     {
-        _children.Add(_comp);
+        _children.Add(_child);
     }
 }

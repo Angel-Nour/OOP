@@ -2,6 +2,7 @@
 
 public class ColorTV : ITV
 {
+    
     public string OnOff(bool f)
     {
         if (f)
@@ -9,14 +10,8 @@ public class ColorTV : ITV
         else
             return "Выключили цветной телевизор";
     }
-
-    public int GetChannel()
+    public string Set(int channel)
     {
-        return 99;
-    }
-
-    public string Set(int c)
-    {
-        return $"Переключаем цветной телевизор на {c} канал";
+        return $"Переключаем цветной телевизор на {channel} канал";
     }
 }

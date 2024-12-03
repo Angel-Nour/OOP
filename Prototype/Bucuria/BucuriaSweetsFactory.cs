@@ -6,11 +6,11 @@ public class BucuriaSweetsFactory : ISweetsFactory
     private ICaramel _caramelPrototype;
     private ILollipops _lollipopsPrototype;
 
-    public BucuriaSweetsFactory(BucuriaChocolate chocolate, BucuriaCaramel caramel, BucuriaLollipops lollipops)
+    public BucuriaSweetsFactory()
     {
-        _chocolatePrototype = chocolate == null ? throw new ArgumentNullException() : chocolate;
-        _caramelPrototype = caramel == null ? throw new ArgumentNullException() : caramel;
-        _lollipopsPrototype = lollipops == null ? throw new ArgumentNullException() : lollipops;
+        _chocolatePrototype = new BucuriaChocolate();
+        _caramelPrototype = new BucuriaCaramel();
+        _lollipopsPrototype = new BucuriaLollipops();
     }
     public IChocolate GetChocolate()
     {

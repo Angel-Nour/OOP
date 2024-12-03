@@ -6,9 +6,9 @@ public class Leaf : ITreeComponent
 {
     public int Value { get; private set; }
 
-    public Leaf(int val)
+    public Leaf(int value)
     {
-        Value = val;
+        Value = value;
     }
     public IEnumerator<int> GetEnumerator()
     {
@@ -20,7 +20,7 @@ public class Leaf : ITreeComponent
         return GetEnumerator();
     }
     
-    public void Add(ITreeComponent _comp)
+    public void Add(ITreeComponent _child)
     {
         throw new InvalidOperationException("Нельзя к листу что-то добавить");
     }

@@ -3,6 +3,5 @@
 public interface ITV
 {
     string OnOff(bool f);
-    string Set(int c);
-    int GetChannel();
+    string Set(int channel);
 }

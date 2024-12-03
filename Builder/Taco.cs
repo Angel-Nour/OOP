@@ -9,15 +9,13 @@ public class Taco
     {
         _ingredients = ingredients;
     }
-
+    
     public override string ToString()
     {
         var text = new StringBuilder();
         text.Append("Burger: ");
         text.Append("Ingredients: ");
         text.AppendJoin(", ", _ingredients);
-        
         return text.ToString();
     }
-    
 }

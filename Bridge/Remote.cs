@@ -24,8 +24,8 @@ public abstract class Remote
         _tv.OnOff(false);
     }
 
-    public virtual void Set()
+    public virtual void Set(int channel)
     {
-        _tv.Set(_tv.GetChannel());
+        _tv.Set(channel);
     }
 }
