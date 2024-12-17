@@ -24,7 +24,7 @@ public class ConcretRemote : Remote
             }
         }
     }
-
+    
     public void Next()
     {
         _tv.Set(_channel++);

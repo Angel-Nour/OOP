@@ -2,6 +2,6 @@
 
 public interface ITV
 {
-    string OnOff(bool f);
+    string OnOff(bool status);
     string Set(int channel);
 }
