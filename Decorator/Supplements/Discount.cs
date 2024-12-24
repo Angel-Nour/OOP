@@ -1,6 +1,6 @@
 ﻿namespace Decorator;
 
-public class Discount : Add
+public class Discount : Additions
 {
     public Discount(ICoffee coffee) : base(coffee)
     {

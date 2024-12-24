@@ -1,10 +1,10 @@
 ﻿namespace Decorator;
 
-public abstract class Add : ICoffee
+public abstract class Additions : ICoffee
 {
-    protected ICoffee _coffee;
+   private protected ICoffee _coffee;
 
-    protected Add(ICoffee coffee)
+    protected Additions(ICoffee coffee)
     {
         _coffee = coffee;
     }

@@ -1,6 +1,6 @@
 ﻿namespace Decorator;
 
-public class DoubleEspresso : Add
+public class DoubleEspresso : Additions
 {
     public DoubleEspresso(ICoffee coffee) : base(coffee)
     {

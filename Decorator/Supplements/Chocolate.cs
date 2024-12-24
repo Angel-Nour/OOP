@@ -1,6 +1,6 @@
 ﻿namespace Decorator;
 
-public class Chocolate : Add
+public class Chocolate : Additions
 {
     public Chocolate(ICoffee coffee) : base(coffee)
     {

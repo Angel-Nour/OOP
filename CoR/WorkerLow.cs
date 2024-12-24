@@ -2,7 +2,7 @@
 
 public class WorkerLow : IWorker
 {
-    protected IWorker _nextWorker;
+    private IWorker _nextWorker;
     
     public void SetNext(IWorker worker)
     {
