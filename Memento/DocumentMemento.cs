@@ -8,7 +8,7 @@ public class DocumentMemento : IMemento
     public DocumentMemento(string state)
     {
         _state = state;
-        _date = DateTime.Now;
+        _date = DateTime.UtcNow;
     }
     public string GetState()
     {

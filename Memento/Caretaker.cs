@@ -9,7 +9,7 @@ public class Caretaker
         _memento.Add(memento);
     }
 
-    public IMemento GetLastState()
+    private IMemento GetLastState()
     {
         if (_memento.Count != 0)
         {

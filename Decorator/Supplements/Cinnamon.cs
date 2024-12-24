@@ -1,6 +1,6 @@
-﻿namespace Decorator;
+﻿namespace Decorator.Supplements;
 
-public class Cinnamon : Additions
+public class Cinnamon : Supplements
 {
     public Cinnamon(ICoffee coffee) : base(coffee)
     {

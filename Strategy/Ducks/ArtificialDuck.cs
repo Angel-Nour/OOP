@@ -1,8 +1,8 @@
-﻿namespace Strategy;
+﻿namespace Strategy.Ducks;
 
-public class ArtificialDuck
+public class ArtificialDuck : Duck
 {
-    public ArtificialDuck() : base()
+    public ArtificialDuck() : base(new ArtificialFly(), new DoSwim(), new DoCrack())
     {
     }
 }

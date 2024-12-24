@@ -11,11 +11,23 @@ public class Document
 
     public void SetMemento(IMemento memento)
     {
-        _value = memento.GetState();
+        if (memento is DocumentMemento documentMemento)
+        {
+            _value = documentMemento.GetState();
+        }
+        else
+        {
+            throw new ArgumentException("Invalid memento type");
+        }
     }
 
     public IMemento CreateMemento()
     {
         return new DocumentMemento(_value);
+    }
+    
+    public string GetValue()
+    {
+        return _value;
     }
 }

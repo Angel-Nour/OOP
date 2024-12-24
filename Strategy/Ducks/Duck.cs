@@ -1,12 +1,12 @@
-﻿namespace Strategy;
+﻿namespace Strategy.Ducks;
 
-public class Duck
+public abstract class Duck
 {
     private IFly _fly;
     private ISwim _swim;
     private ICrack _crack;
 
-    public Duck(IFly fly, ISwim swim, ICrack crack)
+    protected Duck(IFly fly, ISwim swim, ICrack crack)
     {
         _fly = fly;
         _crack = crack;

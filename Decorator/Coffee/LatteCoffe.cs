@@ -1,4 +1,4 @@
-﻿namespace Decorator;
+﻿namespace Decorator.Coffee;
 
 public class LatteCoffe : ICoffee
 {
