@@ -8,9 +8,9 @@ public abstract class Duck
 
     protected Duck(IFly fly, ISwim swim, ICrack crack)
     {
-        _fly = fly;
-        _crack = crack;
-        _swim = swim;
+        _fly = fly == null ? throw new ArgumentNullException(nameof(fly)) : fly;
+        _crack = crack == null ? throw new ArgumentNullException(nameof(crack)) : crack;
+        _swim = swim == null ? throw new ArgumentNullException(nameof(swim)) : swim;
     }
 
     public string DoFly()

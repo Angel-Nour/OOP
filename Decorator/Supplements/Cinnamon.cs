@@ -1,4 +1,6 @@
-﻿namespace Decorator.Supplements;
+﻿using Decorator.Coffee;
+
+namespace Decorator.Supplements;
 
 public class Cinnamon : Supplements
 {

@@ -2,8 +2,8 @@
 
 public class DocumentMemento : IMemento
 {
-    private string _state;
-    private DateTime _date;
+    private readonly string _state;
+    private readonly DateTime _date;
 
     public DocumentMemento(string state)
     {
@@ -18,10 +18,5 @@ public class DocumentMemento : IMemento
     public string GetDate()
     {
         return _date.ToShortDateString();
-    }
-
-    public void SetState(string state)
-    {
-        _state = state;
     }
 }
