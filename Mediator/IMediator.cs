@@ -1,6 +1,8 @@
-﻿namespace Mediator;
+﻿using Mediator.request;
+
+namespace Mediator;
 
 public interface IMediator
 {
-    void Notify(object sender, string eventInfo);
+    void Notify(object sender, IRequest request);
 }

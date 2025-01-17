@@ -1,4 +1,6 @@
-﻿namespace Mediator;
+﻿using Mediator.request;
+
+namespace Mediator;
 
 public class HomeMediator : IMediator
 {
@@ -20,22 +22,23 @@ public class HomeMediator : IMediator
         _calendar.SetMediator(this);
     }
 
-    public void Notify(object sender, string eventInfo)
+    public void Notify(object sender, IRequest request)
     {
-        if (sender == _calendar && eventInfo == "NewDay")
+        switch (request)
         {
-            bool isWeekend = _calendar.IsWeekend;
-            _alarm.SetAlarmTime(isWeekend);
-            _irrigationSystem.ScheduleIrrigation(_calendar.DayOfWeek);
-        }
-        else if (sender == _alarm && eventInfo == "AlarmRang")
-        {
-            _coffeeMachine.CheckAndPrepareCoffee(_calendar.DayOfWeek);
-        }
-        else if (sender == _alarm && eventInfo.StartsWith("HourPassed"))
-        {
-            int hour = int.Parse(eventInfo.Split('-')[1]);
-            _irrigationSystem.CheckIrrigation(hour, _calendar.DayOfWeek);
+            case NewDayRequest newDayRequest:
+                bool isWeekend = newDayRequest.Day == DayOfWeek.Saturday || newDayRequest.Day == DayOfWeek.Sunday;
+                _alarm.SetAlarmTime(isWeekend);
+                IrrigationSystem.ScheduleIrrigation(newDayRequest.Day);
+                break;
+
+            case AlarmRequest alarmRequest:
+                CoffeeMachine.CheckAndPrepareCoffee(_calendar.DayOfWeek);
+                break;
+
+            case TimePassedRequest timePassedRequest:
+                _irrigationSystem.CheckIrrigation(timePassedRequest.Hour, _calendar.DayOfWeek);
+                break;
         }
     }
 }

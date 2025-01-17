@@ -1,6 +1,8 @@
-﻿namespace Mediator;
+﻿using Mediator.request;
 
-public class Alarm: Component
+namespace Mediator;
+
+public abstract class Alarm : Component
 {
     private int _alarmTime;
 
@@ -13,12 +15,12 @@ public class Alarm: Component
     public void Ring()
     {
         Console.WriteLine($"Будильник звенит в {_alarmTime}:00.");
-        _mediator.Notify(this, "AlarmRang");
+        _mediator.Notify(this, new AlarmRequest(_alarmTime));
     }
 
     public void NotifyTime(int hour)
     {
         Console.WriteLine($"Сейчас {hour}:00.");
-        _mediator.Notify(this, $"HourPassed-{hour}");
+        _mediator.Notify(this, new TimePassedRequest(hour));
     }
 }

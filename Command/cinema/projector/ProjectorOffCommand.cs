@@ -13,9 +13,4 @@ public class ProjectorOffCommand : ICommand
     {
         _projector.Off();
     }
-
-    public void Undo()
-    {
-        _projector.On();
-    }
 }

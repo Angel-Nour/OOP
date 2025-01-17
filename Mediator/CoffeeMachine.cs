@@ -1,8 +1,8 @@
 ﻿namespace Mediator;
 
-public class CoffeeMachine : Component
+public abstract class CoffeeMachine : Component
 {
-    public void CheckAndPrepareCoffee(DayOfWeek day)
+    public static void CheckAndPrepareCoffee(DayOfWeek day)
     {
         if (day == DayOfWeek.Saturday)
         {

@@ -13,9 +13,4 @@ public class ReclinerLyingCommand: ICommand
     {
         _recliner.ToLyingPosition();
     }
-
-    public void Undo()
-    {
-        _recliner.ToSittingPosition();
-    }
 }

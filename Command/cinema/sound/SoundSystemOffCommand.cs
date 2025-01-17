@@ -13,9 +13,4 @@ public class SoundSystemOffCommand : ICommand
     {
         _soundSystem.Off();
     }
-
-    public void Undo()
-    {
-        _soundSystem.On();
-    }
 }

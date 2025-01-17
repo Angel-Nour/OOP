@@ -13,9 +13,4 @@ public class KettleOnCommand: ICommand
     {
         _kettle.On();
     }
-
-    public void Undo()
-    {
-        _kettle.Off();
-    }
 }

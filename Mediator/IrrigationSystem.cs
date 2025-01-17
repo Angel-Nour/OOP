@@ -1,12 +1,12 @@
 ﻿namespace Mediator;
 
-public class IrrigationSystem : Component
+public abstract class IrrigationSystem : Component
 {
     private readonly int _irrigationInterval = 6;
     private int _lastIrrigationHour = -6;
     private int _currentDay = -1;
 
-    public void ScheduleIrrigation(DayOfWeek day)
+    public static void ScheduleIrrigation(DayOfWeek day)
     {
         if (day == DayOfWeek.Saturday)
         {
