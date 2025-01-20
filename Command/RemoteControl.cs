@@ -2,75 +2,49 @@
 
 public class RemoteControl
 {
-        private readonly List<ICommand> _onCommands;
-        private readonly List<ICommand> _offCommands;
-        private ICommand _lastOnCommand;
-        private ICommand _lastOffCommand;
+    private readonly List<(ICommand OnCommand, ICommand OffCommand)> _commands = new();
+    private readonly Stack<ICommand> _history = new();
 
-        public RemoteControl()
+    public void SetCommand(int slot, ICommand onCommand, ICommand offCommand)
+    {
+        if (slot >= _commands.Count)
         {
-            _onCommands = new List<ICommand>();
-            _offCommands = new List<ICommand>();
-            _lastOnCommand = null!;
-            _lastOffCommand = null!;
+            _commands.Add((onCommand, offCommand));
         }
-
-        public void SetCommand(int slot, ICommand onCommand, ICommand offCommand)
+        else
         {
-            while (_onCommands.Count <= slot)
-            {
-                _onCommands.Add(null!);
-                _offCommands.Add(null!);
-            }
-
-            _onCommands[slot] = onCommand;
-            _offCommands[slot] = offCommand;
+            _commands[slot] = (onCommand, offCommand);
         }
+    }
 
-        public void OnButtonPressed(int slot)
+    public void OnButtonPressed(int slot)
+    {
+        if (slot < _commands.Count)
         {
-            if (slot < _onCommands.Count && _onCommands[slot] != null!)
-            {
-                _onCommands[slot].Execute();
-                _lastOnCommand = _onCommands[slot];
-                _lastOffCommand = _offCommands[slot];
-            }
-            else
-            {
-                Console.WriteLine($"Нет команды для кнопки включения {slot}");
-            }
+            _commands[slot].OnCommand.Execute();
+            _history.Push(_commands[slot].OffCommand);
         }
+    }
 
-        public void OffButtonPressed(int slot)
+    public void OffButtonPressed(int slot)
+    {
+        if (slot < _commands.Count)
         {
-            if (slot < _offCommands.Count && _offCommands[slot] != null!)
-            {
-                _offCommands[slot].Execute();
-                _lastOnCommand = _onCommands[slot];
-                _lastOffCommand = _offCommands[slot];
-            }
-            else
-            {
-                Console.WriteLine($"Нет команды для кнопки выключения {slot}");
-            }
+            _commands[slot].OffCommand.Execute();
+            _history.Push(_commands[slot].OnCommand);
         }
+    }
 
-        public void UndoButtonPressed()
+    public void UndoButtonPressed()
+    {
+        if (_history.Count > 0)
         {
-            if (_lastOnCommand != null! && _lastOffCommand != null!)
-            {
-                if (_lastOnCommand == _lastOffCommand)
-                {
-                    _lastOffCommand.Execute();
-                }
-                else
-                {
-                    _lastOnCommand.Execute();
-                }
-            }
-            else
-            {
-                Console.WriteLine("Нет команды для отмены");
-            }
+            var lastCommand = _history.Pop();
+            lastCommand.Execute();
         }
+        else
+        {
+            Console.WriteLine("Нет действий для отмены.");
+        }
+    }
 }

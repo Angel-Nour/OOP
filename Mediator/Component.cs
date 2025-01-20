@@ -1,11 +1,17 @@
-﻿namespace Mediator;
+﻿using Mediator.request;
+
+namespace Mediator;
 
 public abstract class Component
 {
-    protected IMediator _mediator;
-
+    public IMediator Mediator { get; private set; }
     public void SetMediator(IMediator mediator)
     {
-        _mediator = mediator;
+        Mediator = mediator;
+    }
+
+    protected void NotifyMediator(IRequest request)
+    {
+        Mediator?.Notify(this, request);
     }
 }
