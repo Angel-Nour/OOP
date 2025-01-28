@@ -2,15 +2,12 @@
 
 namespace Mediator;
 
-public abstract class Calendar : Component
+public class Calendar : Component
 {
-    public DayOfWeek DayOfWeek { get; private set; }
-    public bool IsWeekend => DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday;
+    public Calendar(IMediator mediator) : base(mediator) { }
 
-    public void NewDay(DayOfWeek dayOfWeek)
+    public void NewDay(DayOfWeek day)
     {
-        DayOfWeek = dayOfWeek;
-        Console.WriteLine($"Новый день: {dayOfWeek}.");
-        NotifyMediator(new NewDayRequest(dayOfWeek));
+        Mediator.Notify(new CalendarRequest(day));
     }
 }

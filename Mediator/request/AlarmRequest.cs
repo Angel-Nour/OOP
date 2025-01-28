@@ -2,9 +2,10 @@
 
 public class AlarmRequest : IRequest
 {
-    public int AlarmTime { get; }
-    public AlarmRequest(int alarmTime)
+    public TimeOnly Time { get; }
+
+    public AlarmRequest(TimeOnly time)
     {
-        AlarmTime = alarmTime;
+        Time = time;
     }
 }

@@ -1,39 +1,37 @@
-﻿namespace Mediator;
+﻿using Mediator.request;
 
-public abstract class IrrigationSystem : Component
+namespace Mediator;
+
+public class IrrigationSystem : Component
 {
     private readonly int _irrigationInterval = 6;
     private int _lastIrrigationHour = -6;
-    private int _currentDay = -1;
 
-    public static void ScheduleIrrigation(DayOfWeek day)
+    public IrrigationSystem(IMediator mediator) : base(mediator) { }
+
+    public void CheckIrrigation(AlarmRequest request, DayOfWeek day)
     {
         if (day == DayOfWeek.Saturday)
         {
-            Console.WriteLine("Суббота: оросительная система не работает.");
+            Console.WriteLine("Суббота: Оросительная система не работает.");
+            return;
+        }
+
+        if (request.Time.Hour - _lastIrrigationHour >= _irrigationInterval)
+        {
+            Console.WriteLine("Оросительная система включена.");
+            _lastIrrigationHour = request.Time.Hour;
+        }
+    }
+
+    public void ScheduleIrrigation(CalendarRequest day)
+    {
+        if (day.Day == DayOfWeek.Saturday)
+        {
+            Console.WriteLine("Суббота: Оросительная система не работает.");
             return;
         }
 
         Console.WriteLine("Оросительная система готова к включению через 6 часов.");
-    }
-
-    public void CheckIrrigation(int currentHour, DayOfWeek day)
-    {
-        if (day == DayOfWeek.Saturday)
-        {
-            return;
-        }
-
-        if (_currentDay != (int)day)
-        {
-            _currentDay = (int)day;
-            _lastIrrigationHour = -6;
-        }
-
-        if (currentHour - _lastIrrigationHour >= _irrigationInterval)
-        {
-            Console.WriteLine("Оросительная система включена.");
-            _lastIrrigationHour = currentHour;
-        }
     }
 }

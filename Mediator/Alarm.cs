@@ -2,25 +2,18 @@
 
 namespace Mediator;
 
-public abstract class Alarm : Component
+public class Alarm : Component
 {
-    private int _alarmTime;
+    public Alarm(IMediator mediator) : base(mediator) { }
 
-    public void SetAlarmTime(bool isWeekend)
+    public void NotifyTime(TimeOnly currentHour)
     {
-        _alarmTime = isWeekend ? 8 : 7;
-        Console.WriteLine($"Будильник установлен на {_alarmTime}:00.");
+        Mediator.Notify(new AlarmRequest(currentHour));
     }
 
-    public void Ring()
+    public void SetAlarmTime(CalendarRequest requests)
     {
-        Console.WriteLine($"Будильник звенит в {_alarmTime}:00.");
-        NotifyMediator(new AlarmRequest(_alarmTime));
-    }
-
-    public void NotifyTime(int hour)
-    {
-        Console.WriteLine($"Сейчас {hour}:00.");
-        NotifyMediator(new TimePassedRequest(hour));
+        var alarmTime = requests.IsWeekend ? 8 : 7;
+        Console.WriteLine($"Будильник: Звонок в {alarmTime}:00.");
     }
 }

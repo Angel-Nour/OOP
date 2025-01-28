@@ -1,12 +1,16 @@
-﻿namespace Mediator;
+﻿using Mediator.request;
 
-public abstract class CoffeeMachine : Component
+namespace Mediator;
+
+public class CoffeeMachine : Component
 {
-    public static void CheckAndPrepareCoffee(DayOfWeek day)
+    public CoffeeMachine(IMediator mediator) : base(mediator) { }
+
+    public void CheckAndPrepareCoffee(AlarmRequest request)
     {
-        if (day == DayOfWeek.Saturday)
+        if (request.Time.Hour == 8)
         {
-            Console.WriteLine("Кофемашина готовит кофе.");
+            Console.WriteLine("Кофемашина: Готовлю кофе в 8.");
         }
     }
 }

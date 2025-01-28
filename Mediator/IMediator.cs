@@ -4,5 +4,5 @@ namespace Mediator;
 
 public interface IMediator
 {
-    void Notify(object sender, IRequest request);
+    void Notify(IRequest request);
 }
